@@ -1,0 +1,31 @@
+<mat-card class=" m-auto mt-8 p-4 w-[26rem] min-h-48 max-h-max border rounded-md text-[12px] ">
+  <mat-card-header>
+    <mat-card-title class="p-2 py-4 text-center">Contact us for any query</mat-card-title>
+  </mat-card-header>
+<mat-card-content>
+    <form [formGroup]="form" class="flex flex-col gap-7"  (ngSubmit)="onSubmit()">
+        <div class="input-controller" class="px-4 h-16 flex flex-col">
+            <label for="email">Email</label>
+            <input type="text" id="email" autofocus  formControlName="email" class=" p-2 border outline-sky-400 text-[16px] font-normal tracking-wide" >
+            <div *ngIf="email && email.touched" class="error-box flex flex-col text-[11px] text-red-600">
+                <span *ngIf="email.errors?.['required'] ">Enter email</span>
+                <span *ngIf="email.errors?.['minlength'] || email.errors?.['pattern'] ">email length  </span>
+            </div>
+        </div>
+        <div class="input-controller" class="px-4 h-16 flex flex-col">
+            <label for="message">Message</label>
+            <textarea type="text" id="message" rows="10" formControlName="message" class=" p-2 border outline-sky-400 text-[16px] font-normal tracking-wide" ></textarea>
+            <div *ngIf="message && message.touched" class="error-box flex flex-col text-[11px] text-red-600">
+                <span *ngIf="message.errors?.['required'] ">Enter message</span>
+                <span *ngIf="message.errors?.['minlength'] || message.errors?.['pattern'] "> message length should be min 6 </span>
+            </div>
+        </div>
+        
+          <button mat-raised-button color="primary" style="margin: auto; width: 90%;">Login</button>
+    </form>
+</mat-card-content>
+<mat-card-actions style="padding:0 28px; display:flex; flex-direction:row; justify-content: space-between; font-size: 14px; text-decoration: underline;   ">
+    <a routerLink="/register" >Don't have account ?</a>
+    <a routerLink="/register" >Forgot Password ?</a>
+</mat-card-actions>
+</mat-card>
