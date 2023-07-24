@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoggerService } from 'src/app/shared/logger.service';
 // import { UserService } from '../reactiveForm/user.service';
 // import { RegisterForm } from '../registerForm/registerForm.component';
 // import {
@@ -30,32 +31,27 @@ const routerLinks = [
 })
 export class HeaderComponent {
   links: any[] = routerLinks;
-  constructor(
-    private router: Router,
-    // private loggerService: UserService,
-  ) {}
+  constructor(private router: Router, private loggerService: LoggerService) {}
   loggedIn: any;
 
-
-
   ngOnInit() {
-    // this.router.events.subscribe((val: any) => {
-    //   if (val.url) {
-    //     if (localStorage.getItem('token')) {
-    //       this.loggerService.isLoggedin = true;
-    //       this.loggedIn = this.loggerService.isLoggedin;
-    //     } else {
-    //       this.loggerService.isLoggedin = false;
-    //       this.loggedIn = this.loggerService.isLoggedin;
-    //     }
-    //   }
-    // });
+    this.router.events.subscribe((val: any) => {
+      if (val.url) {
+        if (localStorage.getItem('token')) {
+          this.loggerService.isLoggedin = true;
+          this.loggedIn = this.loggerService.isLoggedin;
+        } else {
+          this.loggerService.isLoggedin = false;
+          this.loggedIn = this.loggerService.isLoggedin;
+        }
+      }
+    });
   }
 
   logout() {
-    // localStorage.removeItem('token');
-    // this.loggerService.isLoggedin = false;
-    // this.loggedIn = this.loggerService.isLoggedin;
-    // this.router.navigate(['/login']);
+    localStorage.removeItem('token');
+    this.loggerService.isLoggedin = false;
+    this.loggedIn = this.loggerService.isLoggedin;
+    this.router.navigate(['/login']);
   }
 }

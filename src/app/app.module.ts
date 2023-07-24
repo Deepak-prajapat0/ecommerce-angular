@@ -27,13 +27,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
 import { RegisterComponent } from './components/forms/register/register.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ContactUsComponent } from './components/forms/contact-us/contact-us.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireModule, FIREBASE_OPTIONS} from '@angular/fire/compat'
 import { Firestore } from 'firebase/firestore';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { Firestore } from 'firebase/firestore';
     RegisterComponent,
     AboutUsComponent,
     ContactUsComponent,
+    FooterComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,10 +72,10 @@ import { Firestore } from 'firebase/firestore';
     MatDividerModule,
     StoreModule.forRoot({}, {}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideAuth(() => getAuth()),
+    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

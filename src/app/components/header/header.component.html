@@ -1,6 +1,6 @@
-<mat-toolbar color="primary" style="display: flex; flex-direction: row; justify-content: space-between; position: absolute; top: 0; left: 0; z-index: 300; font-size: 14px; ">
+<mat-toolbar color="primary" style="display: flex; flex-direction: row; justify-content: space-between; position: fixed; top: 0; left: 0; z-index: 300; font-size: 14px; ">
     <!-- <img src="https://pngtree.com/freepng/online-shop-logo-design_4847480.html" alt=""> -->
-    <button (click)="drawer.toggle()">
+    <button class="lg:hidden" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
     <nav>
@@ -13,7 +13,7 @@
     <ul class="pl-1 flex flex-row gap-4">
         <li *ngIf="!loggedIn"><a routerLink="/login" mat-raised-button>login</a></li>
         <li *ngIf="loggedIn" (click)="logout()"><button mat-raised-button>logout</button></li>
-        <li class="mt-2"><a href=""><mat-icon>shopping_cart</mat-icon></a></li>
+        <li class="mt-2"><a routerLink="/"><mat-icon>shopping_cart</mat-icon></a></li>
     </ul>
   </mat-toolbar>
 <mat-drawer-container class="example-container" style="position: initial ;top: 0; left: 0;  " hasBackdrop="over">

@@ -12,14 +12,14 @@
                 <span *ngIf="name?.errors?.['pattern'] ">name length should be min 3 letter</span>
             </div>
         </div>
-        <div class="input-controller" class="px-4 h-16 flex flex-col">
+        <!-- <div class="input-controller" class="px-4 h-16 flex flex-col">
             <label for="phone">Phone</label>
             <input type="text" id="phone" maxlength="10" formControlName="phone" class=" p-2 border outline-sky-400 text-[16px] font-normal tracking-wide" >
             <div *ngIf="phone && phone.touched " class="error-box flex flex-col text-[11px] text-red-600">
                 <span *ngIf="phone.errors?.['required'] ">Enter phone</span>
                 <span *ngIf="phone.errors?.['pattern'] ">Enter valid Indian phone number</span>
             </div>
-        </div>
+        </div> -->
         <div class="input-controller" class="px-4 h-16 flex flex-col">
             <label for="email">Email</label>
             <input type="text" id="email" formControlName="email" class=" p-2 border outline-sky-400 text-[16px] font-normal tracking-wide" >

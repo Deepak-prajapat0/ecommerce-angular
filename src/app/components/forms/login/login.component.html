@@ -21,11 +21,16 @@
             </div>
         </div>
         
-          <button mat-raised-button color="primary" style="margin: auto; width: 90%;">Login</button>
+          <button mat-raised-button color="primary" [disabled]="form.status === 'INVALID'" style="margin: auto; width: 90%;">Login</button>
     </form>
 </mat-card-content>
-<mat-card-actions style="padding:0 28px; display:flex; flex-direction:row; justify-content: space-between; font-size: 14px; text-decoration: underline;   ">
+<mat-card-actions style="padding:28px; display:flex; flex-direction:row; flex-wrap: wrap; justify-content: space-between; font-size: 14px; text-decoration: underline;   ">
     <a routerLink="/register" >Don't have account ?</a>
     <a routerLink="/register" >Forgot Password ?</a>
+
+    <div (click)="googleSign()" class="m-auto mt-5 p-2 flex flex-row items-center gap-2 cursor-pointer " >
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPk8LCyciAEO1xe9r6k8ytnbjm65WDCp9Dag&usqp=CAU" alt="google" style="height: 2rem;">
+        <span >Sign in with Google</span>
+    </div>
 </mat-card-actions>
 </mat-card>
