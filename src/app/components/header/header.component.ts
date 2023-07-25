@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoggerService } from 'src/app/shared/logger.service';
+import { LoggerService } from '../../services/logger.service';
 // import { UserService } from '../reactiveForm/user.service';
 // import { RegisterForm } from '../registerForm/registerForm.component';
 // import {

@@ -36,6 +36,10 @@ import {AngularFireModule, FIREBASE_OPTIONS} from '@angular/fire/compat'
 import { Firestore } from 'firebase/firestore';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
+import { appReducer } from './shared/redux/store/appState';
+import { EffectsFeatureModule, EffectsModule, EffectsRootModule } from '@ngrx/effects';
+import { ProductEffects } from './shared/redux/state/product.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,7 @@ import { ProductsComponent } from './components/products/products.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -70,7 +75,8 @@ import { ProductsComponent } from './components/products/products.component';
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([ProductEffects]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

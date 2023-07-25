@@ -1,8 +1,8 @@
-import { UserService } from './../../../shared/user.service';
+import { UserService } from '../../../services/user.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoggerService } from 'src/app/shared/logger.service';
+import { LoggerService } from '../../../services/logger.service';
 
 @Component({
   selector: 'app-register',

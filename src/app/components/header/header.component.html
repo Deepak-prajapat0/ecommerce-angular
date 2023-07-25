@@ -4,7 +4,7 @@
         <mat-icon>menu</mat-icon>
     </button>
     <nav>
-       <ul  class="flex flex-row gap-3 overflow-x-auto">
+       <ul  class=" hidden  lg:flex flex-row gap-3 overflow-x-auto">
                 <li *ngFor="let link of links" class="w-full text-white rounded hover:bg-[#7643ce]" (click)="drawer.close()" >
                     <a routerLink="{{link.link}}" class="w-full p-1 px-3 block ">{{link.name}}</a>
                 </li>
