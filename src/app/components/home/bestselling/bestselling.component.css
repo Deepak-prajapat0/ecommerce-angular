@@ -1,0 +1,17 @@
+mat-card-content{
+    padding: 0;
+}
+mat-cart{
+    padding: 0;
+}
+h3{
+    margin: 0;
+}
+
+.mat-mdc-card-content:first-child {
+    padding-top: 0px;
+}
+span{
+    font-size: 14px;
+    color: green;
+}

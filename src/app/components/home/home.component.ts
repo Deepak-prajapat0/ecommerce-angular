@@ -1,10 +1,10 @@
-import { Appstate } from './../../shared/redux/store/appState';
+// import { Appstate } from './../../shared/redux/store/appState';
 import { Component } from '@angular/core';
-import { Action,Store,createReducer,on } from '@ngrx/store';
+import { Action,Store,createReducer,on, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/productModel';
-import { loadProduct } from 'src/app/shared/redux/actions/productAction';
-import { selectProduct } from 'src/app/shared/redux/selectors/product.selector';
+import { loadProduct } from 'src/app/shared/products/productAction';
+import { selectProduct } from 'src/app/shared/products/product.selector';
 
 
 @Component({
@@ -12,14 +12,18 @@ import { selectProduct } from 'src/app/shared/redux/selectors/product.selector';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-// const { cart, loading } = useSelector((state) => state.cart);
 export class HomeComponent {
-  product$ = this.store.select(selectProduct);
+  product$: Observable<Product[]> = this.store.select((state) => state.products);
+  product!:Product[]
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<{ products: Product[] }>) {
 
-  ngOnInit():void{
-      this.store.dispatch(loadProduct())
-      console.log(this.product$)
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(loadProduct());
+    this.product$.subscribe((res:any)=>{
+      this.product = res.products
+    })
   }
 }

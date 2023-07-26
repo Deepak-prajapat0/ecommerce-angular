@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,10 +36,15 @@ import {AngularFireModule, FIREBASE_OPTIONS} from '@angular/fire/compat'
 import { Firestore } from 'firebase/firestore';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
-import { appReducer } from './shared/redux/store/appState';
+// import { appReducer } from './shared/redux/store/appState';
 import { EffectsFeatureModule, EffectsModule, EffectsRootModule } from '@ngrx/effects';
-import { ProductEffects } from './shared/redux/state/product.effects';
+import { ProductEffects } from './shared/products/product.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { productReducers } from './shared/products/productReducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BestsellingComponent } from './components/home/bestselling/bestselling.component';
+import { CategoryComponent } from './components/home/category/category.component';
+import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +58,9 @@ import { HttpClientModule } from '@angular/common/http';
     ContactUsComponent,
     FooterComponent,
     ProductsComponent,
+    BestsellingComponent,
+    CategoryComponent,
+    NewsletterComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,11 +83,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot({ products: productReducers }),
     EffectsModule.forRoot([ProductEffects]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
