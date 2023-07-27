@@ -1,0 +1,27 @@
+.grid > div{
+    display: flex;
+    flex-direction: column;
+    gap:14px
+}
+.grid div span{
+    font-size: 24px ;
+}
+.grid .icons{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 23px;
+}
+.grid div ul li{
+    font-size: 16px;
+    padding: 3px 0;
+}
+.grid div ul li a:hover{
+    color: #673ab7;
+    transition: color;
+    transition-delay: 75ms;
+}
+
+.grid .icons a:hover{
+    color: #673ab7;
+}

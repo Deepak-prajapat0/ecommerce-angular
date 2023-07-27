@@ -21,5 +21,12 @@ export class ContactUsComponent {
     return this.form.get('password');
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if(!this.form.valid){
+      alert("please fill details")
+    }
+   else{
+     console.log(this.form.value);
+   }
+  }
 }

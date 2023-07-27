@@ -7,11 +7,13 @@ import { RegisterComponent } from './components/forms/register/register.componen
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/forms/contact-us/contact-us.component';
 import { ProductsComponent } from './components/products/products.component';
+import { DetailPageComponent } from './components/products/detail-page/detailPage.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
+  {path:"product/:id",component:DetailPageComponent},
   {path:"products",component:ProductsComponent},
   {path:"about",component:AboutUsComponent},
   {path:"contact",component:ContactUsComponent},

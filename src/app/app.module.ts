@@ -45,6 +45,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BestsellingComponent } from './components/home/bestselling/bestselling.component';
 import { CategoryComponent } from './components/home/category/category.component';
 import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
+import { DetailPageComponent } from './components/products/detail-page/detailPage.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { NewsletterComponent } from './components/home/newsletter/newsletter.com
     BestsellingComponent,
     CategoryComponent,
     NewsletterComponent,
+    DetailPageComponent,
   ],
   imports: [
     BrowserModule,

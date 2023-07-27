@@ -9,11 +9,16 @@ export class ProductService {
 
   url: string = 'https://dummyjson.com/products';
 
+
+  getAllProducts(){
+    return this.http.get(this.url+'?limit=100')
+  }
+
   getProducts() {
     return this.http.get(this.url);
   }
 
-  getOneProduct(id:number) {
+  getSingleProduct(id:number) {
     return this.http.get(this.url+'/'+id);
   }
 }

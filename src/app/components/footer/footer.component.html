@@ -1,34 +1,38 @@
-<div class="p-8 m-3 flex flex-row justify-around border">
-    <div>
-        <span>Store Location</span>
-        <ul>
-            <li>
-
-            </li>
-        </ul>
+<div class="p-8 m-3 grid sm:grid-cols-4 grid-cols-2 gap-8 border">
+  <div class="w-32">
+    <span>Store Location</span>
+    <p>
+      500 Terry Francine Street San Francisco, CA 94158 info@mysite.com
+      123-456-7890
+    </p>
+    <div class="icons">
+      <a routerLink="/"> <i class="fa-brands fa-square-facebook"></i></a>
+      <a routerLink="/"> <i class="fa-brands fa-twitter"></i></a>
+      <a routerLink="/"> <i class="fa-brands fa-linkedin"></i></a>
     </div>
-     <div>
-        <span>Store Location</span>
-        <ul>
-            <li>
-
-            </li>
-        </ul>
-    </div>
-     <div>
-        <span>Store Location</span>
-        <ul>
-            <li>
-
-            </li>
-        </ul>
-    </div>
-     <div>
-        <span>Store Location</span>
-        <ul>
-            <li>
-
-            </li>
-        </ul>
-    </div>
+  </div>
+  <div>
+    <span>Shop</span>
+    <ul>
+      <li *ngFor="let links of shop">
+        <a routerLink="/">{{ links }}</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <span>Support</span>
+    <ul>
+      <li *ngFor="let links of support">
+        <a routerLink="/">{{ links }}</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <span>Policy</span>
+    <ul>
+      <li *ngFor="let links of policy">
+        <a routerLink="/">{{ links }}</a>
+      </li>
+    </ul>
+  </div>
 </div>

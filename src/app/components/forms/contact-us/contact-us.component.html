@@ -14,7 +14,7 @@
         </div>
         <div class="input-controller" class="px-4 h-32 flex flex-col">
             <label for="message">Message</label>
-            <textarea type="text" id="message" rows="5" formControlName="message" class=" p-2 border outline-sky-400 text-[16px] font-light resize-none tracking-wide" ></textarea>
+            <textarea type="text" id="message" rows="5" formControlName="message" required class=" p-2 border outline-sky-400 text-[16px] font-light resize-none tracking-wide" ></textarea>
             <div *ngIf="message && message.touched" class="error-box flex flex-col text-[11px] text-red-600">
                 <span *ngIf="message.errors?.['required'] ">Enter message</span>
                 <span *ngIf="message.errors?.['minlength'] || message.errors?.['pattern'] "> message length should be min 6 </span>
