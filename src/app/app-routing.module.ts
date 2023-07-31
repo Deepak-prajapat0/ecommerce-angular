@@ -9,7 +9,7 @@ import { ContactUsComponent } from './components/forms/contact-us/contact-us.com
 import { ProductsComponent } from './components/products/products.component';
 import { DetailPageComponent } from './components/products/detail-page/detailPage.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},

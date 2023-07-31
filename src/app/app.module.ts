@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
@@ -40,12 +40,14 @@ import { ProductsComponent } from './components/products/products.component';
 import { EffectsFeatureModule, EffectsModule, EffectsRootModule } from '@ngrx/effects';
 import { ProductEffects } from './shared/products/product.effects';
 import { HttpClientModule } from '@angular/common/http';
-import { productReducers } from './shared/products/productReducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BestsellingComponent } from './components/home/bestselling/bestselling.component';
 import { CategoryComponent } from './components/home/category/category.component';
 import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
 import { DetailPageComponent } from './components/products/detail-page/detailPage.component';
+import { appReducer } from './shared/redux/store';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { DetailPageComponent } from './components/products/detail-page/detailPag
     MatButtonModule,
     MatCheckboxModule,
     MatListModule,
+    MatProgressSpinnerModule,
     MatExpansionModule,
     MatInputModule,
     MatFormFieldModule,
@@ -85,12 +88,15 @@ import { DetailPageComponent } from './components/products/detail-page/detailPag
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
-    StoreModule.forRoot({ products: productReducers }),
+    StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([ProductEffects]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top', 
+    }),
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],

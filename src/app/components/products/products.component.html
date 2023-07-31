@@ -1,15 +1,23 @@
-<div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2  md:gap-4 m-auto">
-    <mat-card *ngFor="let item of products" class="max-w-lg m-4 cursor-pointer hover:scale-105 transition-all delay-75 " >
-      <mat-card-actions >
-        <mat-card-content class="w-full flex flex-col justify-center" (click)="getDetail(item.id)">
-          <img
-            src="{{ item.thumbnail }}"
-            alt="{{ item.title }}"
-            class="h-[130px] w-full select-none "
-          />
-          <h3 class="truncate">{{item.title}}</h3>
-          <span class="text-green-700">$ {{item.price}}</span>
-        </mat-card-content>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+<div *ngIf="products.length === 0" class="h-[80vh] w-screen flex justify-center items-center">
+  <mat-spinner></mat-spinner>
+</div>
+<div
+  class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-4 m-auto"
+>
+  <mat-card
+    *ngFor="let item of products"
+    class="max-w-lg m-4 cursor-pointer hover:scale-105 transition-all delay-75"
+  >
+    <mat-card-actions>
+      <mat-card-content class="w-full flex flex-col justify-center" (click)="getDetail(item.id)" >
+        <img
+          src="{{ item.thumbnail }}"
+          alt="{{ item.title }}"
+          class="h-[130px] w-full select-none"
+        />
+        <h3 class="truncate">{{ item.title }}</h3>
+        <span class="text-green-700">$ {{ item.price }}</span>
+      </mat-card-content>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
-import { loadProduct } from 'src/app/shared/products/productAction';
+// import { loadProduct } from 'src/app/shared/products/productAction';
 
 @Component({
   selector: 'category',

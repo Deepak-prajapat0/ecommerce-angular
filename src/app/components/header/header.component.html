@@ -1,7 +1,7 @@
-<mat-toolbar color="primary" style=" display: flex; flex-direction: row; justify-content: space-between; position: fixed; top: 0; left: 0; z-index: 300; font-size: 14px; ">
+<mat-toolbar color="primary" style=" display: flex; flex-direction: row; justify-content: space-between; position: fixed; top: 0; left: 0; z-index: 50; font-size: 14px; ">
     <!-- <img src="https://pngtree.com/freepng/online-shop-logo-design_4847480.html" alt=""> -->
     <button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
+        <mat-icon >menu</mat-icon>
     </button>
     <nav>
        <ul  class=" hidden  lg:flex flex-row gap-3 overflow-x-auto">
@@ -16,8 +16,11 @@
         <li class="mt-2"><a routerLink="/"><mat-icon>shopping_cart</mat-icon></a></li>
     </ul>
   </mat-toolbar>
-<mat-drawer-container class="example-container" style="position: static ;top: 0; left: 0;  " hasBackdrop="over">
-        <mat-drawer   style="padding-top: 5rem; width: 15rem;  position: fixed; top: 0; left: 0; background-color: #673ab7;" #drawer mode="over" >
+<mat-drawer-container class="example-container" style="position: static ;top: 0; left: 0; ">
+        <mat-drawer   style="padding-top: 1rem; width: 15rem;  position: fixed; top: 0; left: 0; background-color: #673ab7; z-index: 50;" #drawer mode="side" >
+            <mat-icon class="ml-4 mt-1 cursor-pointer text-white" (click)="drawer.close()" >close</mat-icon>
+            <br>
+            <br>
             <mat-divider></mat-divider>
             <ul  class="flex flex-col gap-3 overflow-x-auto">
                 <li *ngFor="let link of links" class="w-full text-white rounded hover:bg-[#7643ce]" (click)="drawer.close()" >

@@ -1,9 +1,13 @@
-import { createAction, props } from '@ngrx/store';
+import { productReducer, productsReducer } from './../products/productReducer';
+import { ProductState, ProductsState } from "../products/product.state"
 
-export const increament = createAction('INCREMENT');
-export const decrement = createAction('DECREMENT');
-export const reset = createAction('RESET');
-export const customIncrement = createAction(
-  'CUSTOM',
-  props<{ value: number }>()
-);
+
+export interface AppState{
+  products:ProductsState,
+  product:ProductState
+}
+
+export const appReducer ={
+  products:productsReducer,
+  product:productReducer
+}

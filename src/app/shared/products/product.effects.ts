@@ -1,55 +1,60 @@
+import { loadSingleProduct, loadSingleProductSuccess } from 'src/app/shared/products/productAction';
 import { Injectable, effect } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductService } from 'src/app/services/product.service';
-import { loadProduct, loadProductSuccess, loadSingleProduct } from './productAction';
-import {  map, switchMap } from 'rxjs';
-import { Product } from 'src/app/models/productModel';
+import {
+  loadAllProduct,
+  loadAllProductSuccess,
+  loadProduct,
+  loadProductSuccess,
+  
+} from './productAction';
+import { exhaustMap, map, mergeMap, switchMap } from 'rxjs';
+
 
 @Injectable()
 export class ProductEffects {
   constructor(
-    private action: Actions,
+    private actions$: Actions,
     private productService: ProductService
   ) {}
 
+    loadAllProduct = createEffect(()=>{
+    return  this.actions$.pipe(
+      ofType(loadAllProduct),
+      exhaustMap(()=>{
+        return this.productService.getAllProducts().pipe(
+          map((data)=>{
+            return loadAllProductSuccess({products:data})
+          })
+        )
+      })
+    )
+})
+  
+
   loadProduct$ = createEffect(() => {
-    return this.action.pipe(
+    return this.actions$.pipe(
       ofType(loadProduct),
       switchMap(() =>
         this.productService.getProducts().pipe(
-          map((product) =>
-            loadProductSuccess({
-              products: product as ReadonlyArray<Product>,
-            })
-          )
+          map((data:any) => {
+            return loadProductSuccess({ products: data});
+          })
         )
       )
     );
   });
 
-  loadAllProducts$ = createEffect(() => {
-    return this.action.pipe(
-      ofType(loadProduct),
-      switchMap(() =>
-        this.productService.getAllProducts().pipe(
-          map((products) =>
-            loadProductSuccess({
-              products: products as ReadonlyArray<Product>,
-            })
-          )
-        )
-      )
-    );
-  });
 
    loadSingleProduct$ = createEffect(() => {
-    return this.action.pipe(
+    return this.actions$.pipe(
       ofType(loadSingleProduct),
-      switchMap((action) =>
-        this.productService.getSingleProduct(+action).pipe(
-          map((products) =>
-            loadProductSuccess({
-              products: products as Product[],
+      switchMap((action:any) =>
+        this.productService.getSingleProduct(action.id).pipe(
+          map((product:any) =>
+            loadSingleProductSuccess({
+              product: product
             })
           )
         )

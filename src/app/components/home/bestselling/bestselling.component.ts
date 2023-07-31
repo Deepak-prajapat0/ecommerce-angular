@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/productModel';
 import { loadProduct } from 'src/app/shared/products/productAction';
+// import { loadProduct } from 'src/app/shared/products/productAction';
 
 @Component({
   selector: 'bestselling',

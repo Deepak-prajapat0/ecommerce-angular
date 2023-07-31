@@ -1,1 +1,12 @@
-<p>{{product | json}}</p>
+<p *ngIf="product.id !== id; else page"> Loading...</p>
+
+<ng-template #page>
+    <div class="grid sm:grid-cols-2 grid-cols-1 md:gap-4">
+        <div>
+            <img src="{{product.thumbnail}}" alt="{{product.title}}">
+        </div>
+        <div>
+
+        </div>
+    </div>
+</ng-template>
